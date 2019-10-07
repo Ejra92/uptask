@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        include partials/header
+    body.login
+        .contenedor-formulario
+            h1= nombrePagina
+            p Agrega tu email para reestablecer tu contraseña
+
+            //introducimos aqui los mensajes que se mandan por connect-flash en caso de errores
+            include partials/flash
+
+            form#formulario.caja.caja-login(method="POST" action="/reestablecer")
+                .campo
+                    label(for="email") Email
+                    input(type="email" name="email" placeholder="Correo" value=email)
+                .campo.enviar
+                    input.boton(type="submit" value="Reestablecer Password")
+                .campo
+                    a(href="/iniciar-sesion") Volver a Iniciar Sesion

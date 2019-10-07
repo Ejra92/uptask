@@ -1,0 +1,41 @@
+//- el layout es necesario para evitar repetir en cada vista el mismo codigo.
+//- puedo crear block para hacer bloques de contenido
+<!DOCTYPE html>
+html(lang="en")
+    head
+        include partials/header
+        
+    body 
+
+        header.barra
+            a(href="/")
+                h1 Administrador de Proyectos
+                
+            a(href="/cerrar-sesion") Cerrar Sesion
+        main.contenedor
+            aside.contenedor-proyectos
+                .panel.crear-proyecto
+                    a(href="/nuevo-proyecto" class="boton") New Proyecto
+                        span +
+                .panel.lista-proyectos
+                    h2 Proyectos
+                    ul#proyectos.proyectos
+                        if(proyectos.length)
+                            each proyecto in proyectos
+                                li
+                                    a(href=`/proyectos/${proyecto.url}`)=proyecto.nombre
+                                
+       
+                            
+            block contenido
+                
+        script(src="/dist/bundle.js")
+        script(src='https://kit.fontawesome.com/22d788ee66.js', crossorigin='anonymous')
+        
+            //- pre= vardump(proyectos)
+
+//- el pre lo trajimos de manera global ya que en la configuracion del express trajimos un helper
+//- el cual tenia un codigo para obtener los datos en DB en formato de string
+//- luego con el app.use usamos un res.locals.(nombre que quieras) = vardump, asi el pre lo puede utilizar.
+        
+    

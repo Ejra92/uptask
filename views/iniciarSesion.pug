@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        //de esta forma incluimos el partial que lo que hace es tener en comun el head de todos los html
+        include partials/header
+    body.login
+        //aqui damos la estructura que tendra nuestro formulario de iniciar sesion
+        .contenedor-formulario
+            h1 Inicia Sesion en UpTask
+            //con esto nos estamos trayendo el error que se genera al intentar ingresar y tener mal algun dato
+            include partials/flash
+
+            form#formulario.caja.caja-login(method="POST" action="/iniciar-sesion")
+                .campo
+                    label(for="email") Email
+                    input(type="email" name="email" placeholder="Correo" value=email)
+                .campo
+                    label(for="password") Password
+                    input(type="password" name="password" placeholder="Contraseña" value=password)
+                .campo.enviar
+                    input.boton(type="submit" value="Iniciar Sesion")
+                .campo.acciones
+                    a(href="/crear-cuenta") ¿No tienes cuenta? Creala aqui, es GRATIS
+                    a(href="/reestablecer") ¿Olvidaste tu contraseña?

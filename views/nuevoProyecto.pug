@@ -1,0 +1,14 @@
+extends layout
+
+
+include mixins/editarProyecto
+    //para traer el mixin usaremos la palabra reservada include
+
+block contenido
+    .contenido-principal
+        h1 #{nombrePagina}
+
+        if errores
+            each error in errores
+                .alerta=error.texto  
+        +editarProyecto(proyecto)
